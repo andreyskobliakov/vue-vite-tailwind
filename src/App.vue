@@ -1,15 +1,22 @@
 <template>
   <div class="bg-gray-100 min-h-screen flex flex-col justify-center items-center px-4 py-8 md:px-10 md:py-8">
     <div class="mb-6 flex flex-wrap gap-3">
+    <CustomInput v-model="selectedTheme" placeholder="Enter theme name" defaultPlaceholder="Default Input"
+      @change-theme="onSetTheme" :class="{
+        'bg-blue-200 text-blue-800 border border-blue-300 rounded p-2': selectedTheme === 'default',
+        'bg-red-200 text-red-800 border border-red-300 rounded p-2': selectedTheme === 'secondary'
+      }"
+    />
+  </div>
+    <div class="mb-6 flex flex-wrap gap-3">
       <button
         v-for="theme in themes"
         :key="theme"
         @click="onSetTheme(theme)"
-        :class="{
-          'bg-blue-500 text-white': theme === selectedTheme,
-          'bg-gray-200 text-gray-800 hover:bg-gray-300 hover:text-gray-900': theme !== selectedTheme
-        }"
-        class="px-4 py-2 rounded-md cursor-pointer transition duration-300 ease-in-out border border-gray-300 shadow-md"
+        :class="[
+          'px-4 py-2 rounded-md cursor-pointer transition duration-300 ease-in-out border border-gray-300 shadow-md',
+          theme === selectedTheme ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300 hover:text-gray-900'
+        ]"
       >
         {{ theme }}
       </button>
@@ -21,26 +28,25 @@
           :label="item.label"
           :hideDescription="item.hideDescription"
           :key="item.label"
-          class="border border-gray-300 rounded-xl p-7 shadow-xl text-center "/>
+          class="border border-gray-300 rounded-xl p-7 shadow-xl text-center"
+        />
       </div>
     </div>
   </div>
 </template>
 
-
 <script setup>
-  import ColorCard from './components/ColorCard.vue';
-  import baseColors from './base/Colors.json'
-  import { ref, computed } from "vue";
-  const themes = ['default', 'secondary'];
-  const selectedTheme = ref('default');
+import ColorCard from './components/ColorCard.vue';
+import CustomInput from './components/CustomInput.vue';
+import baseColors from './base/Colors.json'
+import { ref, computed } from "vue";
 
-  const themeClasses = computed(() => {
-    return `theme-${selectedTheme.value}`;
-  })
+const themes = ['default', 'secondary'];
+const selectedTheme = ref('default');
 
-  const onSetTheme = (newTheme) => {
-    selectedTheme.value = newTheme;
-  }
+const themeClasses = computed(() => `theme-${selectedTheme.value}`);
+
+const onSetTheme = (newTheme) => {
+  selectedTheme.value = newTheme;
+}
 </script>
-
