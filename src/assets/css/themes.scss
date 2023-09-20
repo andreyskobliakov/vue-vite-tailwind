@@ -1,0 +1,63 @@
+@use 'sass:color';
+
+:root {
+  --blue-100: #{$blue-100};
+  --blue-400: #{$blue-400};
+  --blue-600: #{$blue-600};
+
+  --purple-100: #{$purple-100};
+  --purple-600: #{$purple-600};
+
+  --red-100: #{$red-100};
+  --red-600: #{$red-600};
+
+  --green-100: #{$green-100};
+  --green-600: #{$green-600};
+
+  --gold-100: #{$gold-100};
+  --gold-600: #{$gold-600};
+
+  --white: #{$white};
+
+  --gray-100: #{$gray-100};
+  --gray-300: #{$gray-300};
+  --gray-500: #{$gray-500};
+  --gray-600: #{$gray-600};
+
+  --dark-400: #{$dark-400};
+  --dark-500: #{$dark-500};
+  --dark-600: #{$dark-600};
+}
+
+
+.bg-primary-gradient {
+  background: $primary-gradient;
+}
+
+.theme-secondary {
+  --blue-100: #{color.adjust($blue-100, $red: 15)};
+  --blue-400: #{color.adjust($blue-400, $red: 50)};
+  --blue-600: #{color.adjust($blue-600, $red: 90)};
+
+  --purple-100: #{color.adjust($purple-100, $red: 50)};
+  --purple-600: #{color.adjust($purple-600, $red: 75)};
+
+  --red-100: #{color.adjust($red-100, $red: 50)};
+  --red-600: #{color.adjust($red-600, $red: 75)};
+
+  --green-100: #{color.adjust($green-100, $red: 50)};
+  --green-600: #{color.adjust($green-600, $red: 75)};
+
+  --gold-100: #{color.adjust($gold-100, $red: 50)};
+  --gold-600: #{color.adjust($gold-600, $red: 75)};
+
+
+  --gray-100: #{$gray-100};
+  --gray-300: #{$gray-300};
+  --gray-500: #{$gray-500};
+  --gray-600: #{$gray-600};
+
+  --dark-400: #{$dark-400};
+  --dark-500: #{$dark-500};
+  --dark-600: #{$dark-600};
+}

@@ -1,89 +1,46 @@
 <template>
-  <div :class="themeClasses">
-    <div class="min-h-screen flex flex-col items-center justify-center">
-      <h1 class="text-h1 mb-4" :style="{ color: welcomeTextColor }">Welcome</h1>
-      <div class="w-20 h-20 bg-blue rounded-full flex items-center justify-center mb-10 mt-10 theme-secondary" :style="{ backgroundColor: blueColor, color: textColor }">
-        <span>Blue</span>
-      </div>
-      <button @click="toggleTheme" class="theme-toggle-button">
-        Theme
+  <div class="bg-gray-100 min-h-screen flex flex-col justify-center items-center px-4 py-8 md:px-10 md:py-8">
+    <div class="mb-6 flex flex-wrap gap-3">
+      <button
+        v-for="theme in themes"
+        :key="theme"
+        @click="onSetTheme(theme)"
+        :class="{
+          'bg-blue-500 text-white': theme === selectedTheme,
+          'bg-gray-200 text-gray-800 hover:bg-gray-300 hover:text-gray-900': theme !== selectedTheme
+        }"
+        class="px-4 py-2 rounded-md cursor-pointer transition duration-300 ease-in-out border border-gray-300 shadow-md"
+      >
+        {{ theme }}
       </button>
+    </div>
+    <div class="flex flex-col gap-5 items-center" :class="themeClasses">
+      <div v-for="(items, index) in baseColors" :key="index + selectedTheme" class="flex flex-wrap gap-8">
+        <color-card v-for="item in items"
+          :card-classes="item.value"
+          :label="item.label"
+          :hideDescription="item.hideDescription"
+          :key="item.label"
+          class="border border-gray-300 rounded-xl p-7 shadow-xl text-center "/>
+      </div>
     </div>
   </div>
 </template>
 
-<script>
-import { ref, computed } from 'vue';
 
-export default {
-  setup() {
-    const currentTheme = ref('theme1');
+<script setup>
+  import ColorCard from './components/ColorCard.vue';
+  import baseColors from './base/Colors.json'
+  import { ref, computed } from "vue";
+  const themes = ['default', 'secondary'];
+  const selectedTheme = ref('default');
 
-    const themeClasses = computed(() => {
-      return currentTheme.value;
-    });
+  const themeClasses = computed(() => {
+    return `theme-${selectedTheme.value}`;
+  })
 
-    const themeColors = {
-      theme1: {
-        blueColor: '#007bff',
-        textColor: '#ffffff',
-      },
-      theme2: {
-        blueColor: '#333333',
-        textColor: '#000000',
-      },
-    };
-
-    const toggleTheme = () => {
-      currentTheme.value = currentTheme.value === 'theme1' ? 'theme2' : 'theme1';
-    };
-
-    const blueColor = computed(() => {
-      return themeColors[currentTheme.value].blueColor;
-    });
-
-    const textColor = computed(() => {
-      return themeColors[currentTheme.value].textColor;
-    });
-
-    const welcomeTextColor = computed(() => {
-      return textColor.value;
-    });
-
-    return {
-      themeClasses,
-      toggleTheme,
-      blueColor,
-      textColor,
-      welcomeTextColor,
-    };
-  },
-};
+  const onSetTheme = (newTheme) => {
+    selectedTheme.value = newTheme;
+  }
 </script>
 
-<style scoped lang="scss">
-@import "../src/assets/variables.scss"; 
-
-:root {
-  --primary: #{$primary};
-}
-
-.theme1 {
-}
-
-.theme2 {
-  
-}
-
-.theme-secondary {
-  background-color: var(--primary); 
-}
-
-.theme1 .theme-secondary {
-  background-color: var(--primary); 
-}
-
-.theme2 .theme-secondary {
-  background-color: var(--primary); 
-}
-</style>

@@ -1,0 +1,99 @@
+[
+  [
+    {
+      "label": "gradient",
+      "value": "bg-primary-gradient",
+      "hideDescription": true
+    }
+  ],
+  [
+    {
+      "label": "blue",
+      "value": "bg-blue-100"
+    },
+    {
+      "label": "brand blue",
+      "value": "bg-blue-400"
+    },
+    {
+      "label": "blue 2",
+      "value": "bg-blue-600"
+    }
+  ],
+  [
+    {
+      "label": "purple",
+      "value": "bg-purple-100"
+    },
+    {
+      "label": "brand purple",
+      "value": "bg-purple-600"
+    }
+  ],
+  [
+    {
+      "label": "red",
+      "value": "bg-red-100"
+    },
+    {
+      "label": "red 2",
+      "value": "bg-red-600"
+    }
+  ],
+  [
+    {
+      "label": "green",
+      "value": "bg-green-100"
+    },
+    {
+      "label": "green 2",
+      "value": "bg-green-600"
+    }
+  ],
+  [
+    {
+      "label": "gold",
+      "value": "bg-gold-100"
+    },
+    {
+      "label": "gold 2",
+      "value": "bg-gold-600"
+    }
+  ],
+  [
+    {
+      "label": "light",
+      "value": "bg-white"
+    },
+    {
+      "label": "gray",
+      "value": "bg-gray-100"
+    },
+    {
+      "label": "gray 2",
+      "value": "bg-gray-300"
+    },
+    {
+      "label": "gray 3",
+      "value": "bg-gray-500"
+    },
+    {
+      "label": "gray 4",
+      "value": "bg-gray-600"
+    }
+  ],
+  [
+    {
+      "label": "dark",
+      "value": "bg-dark-400"
+    },
+    {
+      "label": "dark 2",
+      "value": "bg-dark-500"
+    },
+    {
+      "label": "dark 3",
+      "value": "bg-dark-600"
+    }
+  ]
+]
