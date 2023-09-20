@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "tinycolor2": "^1.6.0",
-    "vue": "^3.3.4"
+    "vue": "^3.2.36"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
