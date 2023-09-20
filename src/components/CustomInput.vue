@@ -1,53 +1,32 @@
 <template>
-  <div>
     <input
-      :value="value"
-      @input="updateValue($event)"
-      class="border rounded p-2"
+      :value="modelValue"
+      @input="onInput"
       :placeholder="placeholder"
+      :class="inputClass"
     />
-    <p>Name Theme: {{ value }}</p>
-    <input v-model="defaultValue" class="border rounded p-2" :placeholder="defaultPlaceholder" />
-  </div>
-</template>
-
-<script>
-export default {
+  </template>
+  
+  <script>
+  export default {
     props: {
-  modelValue: {
-    type: String,
-    required: true,
+      modelValue: String,
+      placeholder: String,
+      inputClass: String,
+    },
+    emits: ['update:modelValue', 'change-theme'],
+  
+    methods: {
+  onInput({ target: { value } }) {
+    const inputText = value.toLowerCase();
+
+    if (inputText === 'змінити') {
+      this.$emit('change-theme', 'secondary');
+    }
+
+    this.$emit('update:modelValue', value);
   },
-  placeholder: String,
-  defaultPlaceholder: String,
 },
-  data() {
-    return {
-      value: this.modelValue,
-      defaultValue: '',
-    };
-  },
-  watch: {
-    modelValue(newValue) {
-      this.value = newValue;
-    },
-    defaultValue(newValue) {
-      this.value = newValue;
-    },
-    value(newValue) {
-      if (newValue.toLowerCase() === 'default') {
-        this.$emit('change-theme', 'default'); 
-      } else if (newValue.toLowerCase() === 'secondary') {
-        this.$emit('change-theme', 'secondary');
-      }
-    },
-  },
-  methods: {
-    updateValue(newValue) {
-      this.value = newValue;
-      this.$emit('update:modelValue', newValue);
-      this.defaultValue = newValue;
-    },
-  },
-};
-</script>
+  }
+  </script>
+  
