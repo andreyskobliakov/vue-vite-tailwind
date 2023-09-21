@@ -1,76 +1,70 @@
 <template>
-  <div class="bg-gray-100 min-h-screen flex flex-col justify-center items-center px-4 py-8 md:px-10 md:py-8">
-    <div class="mb-6 flex flex-wrap gap-3">
-      <CustomInput v-model="selectedTheme" placeholder="Enter theme name" defaultPlaceholder="Default Input"
-        @change-theme="onSetTheme"
-        @input="updateDefaultInputValue"
-      />
-    </div>
-    <div class="mb-6">
-      <p>Name Theme: {{ selectedTheme }}</p>
-    </div>
-    <div class="mb-6 flex flex-wrap gap-3">
-      <input v-model="defaultInputValue"
-        @input="updateCustomInputValue"
-      >
-    </div>
-    <div class="mb-6">
-      <button @click="updateDefaultInputValue">Rebot default input</button>
-    </div>
-    <div class="mb-6 flex flex-wrap gap-3">
-      <button
-        v-for="theme in themes"
-        :key="theme"
-        @click="onSetTheme(theme)"
-        :class="[
-          'px-4 py-2 rounded-md cursor-pointer transition duration-300 ease-in-out border border-gray-300 shadow-md',
-          theme === selectedTheme ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300 hover:text-gray-900'
-        ]"
-      >
-        {{ theme }}
-      </button>
-    </div>
-    <div class="flex flex-col gap-5 items-center" :class="themeClasses">
-      <div v-for="(items, index) in baseColors" :key="index + selectedTheme" class="flex flex-wrap gap-8">
-        <ColorCard v-for="item in items"
-          :card-classes="item.value"
-          :label="item.label"
-          :hideDescription="item.hideDescription"
-          :key="item.label"
-          class="border border-gray-300 rounded-xl p-7 shadow-xl text-center"
-        />
-      </div>
+  <div class="bg-blue-100 min-h-screen flex justify-center items-center">
+    <div class="w-1/2 p-6 bg-blue-300 rounded-lg shadow-lg transition-transform transform hover:scale-105">
+      <TextInput label="Text Input" v-model="textInputValue" class="p-2 mb-4 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+      <CustomInput label="Password" type="password" class="p-2 mb-4">
+        <input v-model="passwordValue" type="password" class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </CustomInput>
+
+      <CustomEmailInput label="Email" type="email" class="p-2 mb-4">
+        <input v-model="emailValue" type="email" class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:bg-blue-500" />
+      </CustomEmailInput>
+
+      <TextareaInput label="Textarea" v-model="textareaValue" class="p-2 mb-4 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+      <SelectInput label="Select" v-model="selectedValue" :options="selectOptions" class="p-2 mb-4 w-full border rounded focus:outline-none ring-2 focus:ring-blue-500" />
+
+      <ControlledInput label="Controlled Input (Checkbox)" v-model="checkboxValue" inputType="checkbox" :options="checkboxOptions" class="p-2 mb-4 w-full" />
+
+      <ControlledInput label="Controlled Input (Radio)" v-model="radioValue" inputType="radio" :options="radioOptions" class="p-2 mb-4 w-full" />
+
     </div>
   </div>
 </template>
 
-<script setup>
-import ColorCard from './components/ColorCard.vue';
-import CustomInput from './components/CustomInput.vue';
-import baseColors from './base/Colors.json'
-import { ref, computed } from "vue";
 
-const themes = ['default', 'secondary'];
-const selectedTheme = ref('default');
-const defaultInputValue = ref('');
+<script>
+import CustomInput from './components/wrapper/CustomInput.vue';
+import CustomEmailInput from './components/wrapper/CustomEmailInput.vue';
+import TextareaInput from './components/wrapper/Textarea-input.vue';
+import TextInput from './components/wrapper/text-input.vue';
+import SelectInput from './components/wrapper/Select-input.vue';
+import ControlledInput from './components/wrapper/Controlled-input.vue';
 
-const themeClasses = computed(() => `theme-${selectedTheme.value}`);
-
-const onSetTheme = (newTheme) => {
-  selectedTheme.value = newTheme;
-}
-
-const updateDefaultInputValue = () => {
-  
-  defaultInputValue.value = selectedTheme.value;
-}
-
-const updateCustomInputValue = () => {
-  
-  selectedTheme.value = defaultInputValue.value;
-}
-
+export default {
+  components: {
+    CustomInput,
+    CustomEmailInput,
+    TextareaInput,
+    TextInput,
+    SelectInput,
+    ControlledInput,
+  },
+  data() {
+    return {
+      passwordValue: '',
+      emailValue: '',
+      textareaValue: '',
+      textInputValue: '',
+      selectedValue: '',
+      checkboxValue: false,
+      radioValue: '',
+      selectOptions: [
+        { label: 'Option 1', value: 'option1' },
+        { label: 'Option 2', value: 'option2' },
+        { label: 'Option 3', value: 'option3' },
+      ],
+      checkboxOptions: [
+        { label: 'Option A', value: 'optionA' },
+        { label: 'Option B', value: 'optionB' },
+        { label: 'Option C', value: 'optionC' },
+      ],
+      radioOptions: [
+        { label: 'Option X', value: 'optionX' },
+        { label: 'Option Y', value: 'optionY' },
+        { label: 'Option Z', value: 'optionZ' },
+      ],
+    };
+  },
+};
 </script>
-
-<style scoped>
-</style>
