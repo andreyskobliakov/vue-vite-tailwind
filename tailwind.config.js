@@ -17,7 +17,21 @@ export default {
       sans: 'Semi-bold, sans-serif'
     },
     extend: {
+      backgroundColor: ['hover', 'focus, active'],
+      borderColor: ['hover', 'focus, active'],
       colors: {
+        gold: {
+          50: '#fff9db',
+          100: '#fff3b3',
+          200: '#ffec8b',
+          300: '#ffe563',
+          400: '#ffde3b',
+          500: '#ffd713', // Основний колір "gold"
+          600: '#ffcd00',
+          700: '#f4bb00',
+          800: '#e0a100',
+          900: '#c68a00',
+        },
         "blue-100": "var(--blue-100)",
         "blue-400": "var(--blue-400)",
         "blue-600": "var(--blue-600)",
