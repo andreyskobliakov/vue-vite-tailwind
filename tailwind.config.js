@@ -17,8 +17,6 @@ export default {
       sans: 'Semi-bold, sans-serif'
     },
     extend: {
-      backgroundColor: ['hover', 'focus, active'],
-      borderColor: ['hover', 'focus, active'],
       colors: {
         gold: {
           50: '#fff9db',

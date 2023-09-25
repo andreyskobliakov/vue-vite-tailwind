@@ -3,30 +3,30 @@
       <div class="mb-4">
         <h2 class="text-xl font-semibold mb-2">BUTTON Style</h2>
         <div class="flex space-x-4">
-          <Button color="primary">Default</Button>
-          <Button color="secondary">Outlined</Button>
-          <Button color="success">Tonal</Button>
-          <Button color="danger">TEXT</Button>
-          <Button color="warning">Plain</Button>
-          <Button color="secondary" style="contained" size="medium" additionalClasses="m-2" :disabled="true">Disabled Button</Button>
+          <AppButton color="primary">Default</AppButton>
+          <AppButton color="secondary">Outlined</AppButton>
+          <AppButton color="success">Tonal</AppButton>
+          <AppButton color="danger">TEXT</AppButton>
+          <AppButton color="warning">Plain</AppButton>
+          <AppButton color="secondary" type="contained" size="medium" class="m-2" :disabled="true">Disabled Button</AppButton>
         </div>
       </div>
       <div class="container mx-auto mt-8 p-4">
         <div class="mb-4">
-          <Button color="custom" style="custom" size="medium" additionalClasses="my-custom-classes">
+          <AppButton color="customButton" type="customButton" size="medium" class="CustomButton">
             <template #icon>
               <Icon iconName="chat"></Icon>
             </template>
             CALL TO ACTION
-          </Button>
+          </AppButton>
         </div>
         <div class="mb-4">
-          <Button color="customlogin" style="customlogin" size="small" additionalClasses="custom-login">
+          <AppButton color="CustomButtonlogin" style="customlogin" size="small" class="CustomButton-login">
             <template #icon>
               <Icon iconName="login"></Icon>
             </template>
             LOGIN
-          </Button>
+          </AppButton>
         </div>
         </div>
         <div class="Aroww icon">
@@ -56,12 +56,12 @@
   </template>
   
   <script>
-  import Button from './components/Button.vue';
+  import AppButton from './components/AppButton.vue';
   import Icon from './components/Icon.vue';
   
   export default {
     components: {
-      Button,
+      AppButton,
       Icon,
     },
   };
