@@ -52,8 +52,8 @@
   --gold-600: #{color.adjust($gold-600, $red: 75)};
 
 
-  --gray-100: #{$gray-100};
-  --gray-300: #{$gray-300};
+  --gray-100: #{color.adjust($gray-100, $red: 50)};
+  --gray-300: #{color.adjust($gray-300, $red: 75)};
   --gray-500: #{$gray-500};
   --gray-600: #{$gray-600};
 
