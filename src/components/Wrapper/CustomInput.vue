@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  import InputWrapper from './InputWrapper.vue';
+  import InputWrapper from '../Wrapper/InputWrapper.vue';
   
   export default {
     components: {

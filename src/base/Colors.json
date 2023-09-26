@@ -61,39 +61,8 @@
     }
   ],
   [
-    {
-      "label": "light",
-      "value": "bg-white"
-    },
-    {
-      "label": "gray",
-      "value": "bg-gray-100"
-    },
-    {
-      "label": "gray 2",
-      "value": "bg-gray-300"
-    },
-    {
-      "label": "gray 3",
-      "value": "bg-gray-500"
-    },
-    {
-      "label": "gray 4",
-      "value": "bg-gray-600"
-    }
-  ],
-  [
-    {
-      "label": "dark",
-      "value": "bg-dark-400"
-    },
-    {
-      "label": "dark 2",
-      "value": "bg-dark-500"
-    },
-    {
-      "label": "dark 3",
-      "value": "bg-dark-600"
-    }
+    
+   
   ]
+
 ]
